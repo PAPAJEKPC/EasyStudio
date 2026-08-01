@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1877e8" />
+  <title>EASY PHOTO STUDIO — Powered By PAPAJEKPRINT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <div class="logo">EPS</div>
+        <div><h1>EASY PHOTO STUDIO</h1><p>Powered By PAPAJEKPRINT · 300 DPI</p></div>
+      </header>
+
+      <nav class="tabs" aria-label="Tools">
+        <button class="tab active" data-tab="upload">1 Upload</button>
+        <button class="tab" data-tab="preset">2 Presets</button>
+        <button class="tab" data-tab="sizes">3 Sizes</button>
+        <button class="tab" data-tab="paper">4 Paper</button>
+        <button class="tab" data-tab="polaroid">5 Polaroid</button>
+      </nav>
+
+      <section class="panel active" id="upload">
+        <h2>Upload Photo</h2>
+        <label class="drop-zone" id="dropZone">
+          <input type="file" id="photoInput" accept="image/jpeg,image/png" hidden>
+          <span class="upload-icon">⬆</span>
+          <strong>Drag & drop photo</strong>
+          <small>or click to browse JPG / PNG</small>
+        </label>
+        <div class="upload-actions"><button id="clearPhotos" class="danger-button" type="button">Clear photos</button></div>
+        <div class="thumb-list" id="thumbList"></div>
+        <div class="crop-card hidden" id="cropCard">
+          <img id="cropImage" alt="Crop workspace">
+          <div class="button-row"><button id="applyCrop" class="primary">Apply crop</button><button id="resetCrop">Reset</button></div>
+        </div>
+      </section>
+
+      <section class="panel" id="preset">
+        <h2>Preset Sizes</h2>
+        <label>Choose preset<select id="presetSelect">
+          <option value="1x1">1 x 1</option><option value="1.5x1.5">1.5 x 1.5</option><option value="2x2" selected>2 x 2</option><option value="passport">Passport</option><option value="visa">Visa</option><option value="halfbody">Half Body</option><option value="wallet">Wallet</option>
+        </select></label>
+        <p class="hint">Selecting a preset updates the active size instantly.</p>
+      </section>
+
+      <section class="panel" id="sizes">
+        <h2>Sizes & Quantity</h2>
+        <div class="grid-2"><label>Width<input id="widthInput" type="number" min="0.1" step="0.1" value="2"></label><label>Height<input id="heightInput" type="number" min="0.1" step="0.1" value="2"></label></div>
+        <div class="grid-2"><label>Unit<select id="unitInput"><option>inch</option><option>mm</option><option>cm</option></select></label><label>Quantity<input id="qtyInput" type="number" min="1" step="1" value="4"></label></div>
+        <button id="addSize" class="primary full">Add size</button>
+        <div class="sizes-list" id="sizesList"></div>
+      </section>
+
+      <section class="panel" id="paper">
+        <h2>Paper Size</h2>
+        <div class="paper-buttons" id="paperButtons"><button data-paper="3R">3R</button><button data-paper="4R" class="active">4R</button><button data-paper="5R">5R</button><button data-paper="A4">A4</button><button data-paper="Letter">Letter</button><button data-paper="Legal">Legal</button></div>
+        <label>Margin <output id="marginOut">0.15 in</output><input id="marginSlider" type="range" min="0" max="0.6" step="0.01" value="0.15"></label>
+        <label>Spacing <output id="spacingOut">0.06 in</output><input id="spacingSlider" type="range" min="0" max="0.3" step="0.01" value="0.06"></label>
+        <div class="checks"><label><input id="landscape" type="checkbox"> Landscape</label><label><input id="guides" type="checkbox" checked> Show Cutting Guides</label><label><input id="labels" type="checkbox" checked> Show Labels</label><label><input id="showBorder" type="checkbox" checked> Show Border</label></div>
+      </section>
+
+      <section class="panel" id="polaroid">
+        <h2>Polaroid</h2>
+        <label class="drop-zone compact" id="polaroidDropZone"><input type="file" id="multiInput" accept="image/jpeg,image/png" multiple hidden><span>＋</span><strong>Drag & drop multiple photos</strong><small>or click to browse JPG / PNG</small></label>
+        <div class="thumb-list" id="polaroidThumbList"></div>
+        <p class="crop-help">Select a thumbnail, then drag the photo and resize the crop area.</p>
+        <div class="crop-card hidden" id="polaroidCropCard">
+          <div class="crop-title"><strong>Adjust selected photo</strong><span id="cropPhotoNumber"></span></div>
+          <img id="polaroidCropImage" alt="Polaroid crop workspace">
+          <div class="button-row"><button id="applyPolaroidCrop" class="primary" type="button">Apply crop</button><button id="resetPolaroidCrop" type="button">Reset crop</button></div>
+        </div>
+        <label>Format<select id="polaroidFormat"><option value="mini">Instax Mini</option><option value="square">Instax Square</option><option value="wide">Instax Wide</option></select></label>
+        <div class="polaroid-spec" id="polaroidSpec"><strong>Instax Mini</strong><span>Film 54 × 86 mm</span><span>Image 46 × 62 mm</span></div>
+        <label>Margin <output id="pMarginOut">0.18 in</output><input id="pMargin" type="range" min="0" max="0.7" step="0.01" value="0.18"></label>
+        <label>Spacing <output id="pSpacingOut">0.08 in</output><input id="pSpacing" type="range" min="0" max="0.35" step="0.01" value="0.08"></label>
+        <label>Photo Border <output id="borderOut">0.14 in</output><input id="borderSlider" type="range" min="0.04" max="0.35" step="0.01" value="0.14"></label>
+        <div class="checks"><label><input id="pLandscape" type="checkbox"> Landscape</label><label><input id="pGuides" type="checkbox" checked> Show Cutting Guides</label><label><input id="pLabels" type="checkbox" checked> Show Labels</label></div>
+      </section>
+
+      <section class="panel always">
+        <h2>Image Processing</h2>
+        <label>Zoom <output id="zoomOut">1.00x</output><input id="zoom" type="range" min="0.4" max="2.5" step="0.01" value="1"></label>
+        <label>Brightness <output id="brightnessOut">100%</output><input id="brightness" type="range" min="40" max="160" value="100"></label>
+        <label>Contrast <output id="contrastOut">100%</output><input id="contrast" type="range" min="40" max="180" value="100"></label>
+        <div class="button-row"><button id="rotateBtn">Rotate 90°</button><button id="flipBtn">Flip Horizontal</button></div>
+      </section>
+
+      <div class="contact-card"><span>✉</span><p>For suggestion and feedback please email <a href="mailto:papajekprint@gmail.com">papajekprint@gmail.com</a></p></div>
+    </aside>
+
+    <main class="preview-panel">
+      <div class="preview-top"><div><h2>Printable Preview</h2><p><strong class="ready-dot">● 300 DPI Ready</strong> · <span id="pageCount">1 page</span> · <span id="photoCount">0 photos</span> · <span id="paperLabel">4R portrait</span></p></div><div class="preview-tools"><div class="preview-zoom" aria-label="Preview zoom controls"><button id="previewZoomOut" type="button" aria-label="Zoom out">−</button><button id="previewZoomReset" type="button" aria-label="Reset preview zoom">100%</button><button id="previewZoomIn" type="button" aria-label="Zoom in">+</button></div><div class="actions"><button id="feedbackBtn">Public Feedback</button><button id="printBtn">Print</button><button id="downloadPng" class="primary">Download PNG</button><button id="downloadPdf">Download PDF</button></div></div></div>
+      <div class="canvas-wrap"><canvas id="previewCanvas" aria-label="Printable page preview"></canvas></div>
+    </main>
+  </div>
+
+  <dialog id="feedbackDialog" class="feedback-dialog" aria-labelledby="feedbackTitle">
+    <form method="dialog" class="dialog-card" id="feedbackForm">
+      <div class="dialog-head"><div><h2 id="feedbackTitle">Public Feedback</h2><p>View comments shared through this feedback board.</p></div><button value="cancel" class="icon-button" aria-label="Close feedback">×</button></div>
+      <label>Your name<input id="feedbackName" type="text" maxlength="40" required placeholder="Enter your name"></label>
+      <label>Comment<textarea id="feedbackComment" maxlength="500" required placeholder="Share an idea or report an issue"></textarea></label>
+      <div class="feedback-contact">For suggestion and feedback please email <a href="mailto:papajekprint@gmail.com">papajekprint@gmail.com</a></div>
+      <div class="feedback-rule">Each user can post up to 2 consecutive comments. In this browser-only version, comments are stored on this device.</div>
+      <p id="feedbackStatus" class="feedback-status" role="status"></p>
+      <div class="dialog-actions"><button type="button" id="closeFeedback">Close</button><button type="submit" class="primary">Save feedback</button></div>
+      <div class="feedback-list-wrap"><h3>Public comments</h3><div id="feedbackList" class="feedback-list"></div></div>
+    </form>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
