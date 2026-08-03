@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyPhoto by PapaJekPrint</title>
-  <meta name="theme-color" content="#2783de">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -111,14 +108,16 @@
 
       <section id="sizesCard" class="card">
         <div class="section-title"><span id="sizeSectionNumber">3</span><h2>Sizes & Quantity</h2></div>
-        <div class="form-grid two">
-          <label>Width <input id="photoW" type="number" min="0.1" step="0.1" value="2"></label>
-          <label>Height <input id="photoH" type="number" min="0.1" step="0.1" value="2"></label>
+        <div id="idSizeButtons" class="button-grid id-size-buttons">
+          <button type="button" data-id-size="1x1">1x1 in</button>
+          <button type="button" data-id-size="1.5x1.5">1.5x1.5 in</button>
+          <button type="button" data-id-size="2x2" class="active">2x2</button>
+          <button type="button" data-id-size="Passport">Passport</button>
         </div>
-        <div class="form-grid two">
-          <label>Unit <select id="unit"><option>inch</option><option>mm</option><option>cm</option></select></label>
-          <label>Quantity <input id="customQty" type="number" min="1" max="100" value="4"></label>
-        </div>
+        <label>Quantity <input id="customQty" type="number" min="1" max="100" value="4"></label>
+        <input id="photoW" type="number" min="0.1" step="0.1" value="2" hidden>
+        <input id="photoH" type="number" min="0.1" step="0.1" value="2" hidden>
+        <select id="unit" hidden><option>inch</option><option>mm</option><option>cm</option></select>
         <input id="cols" type="number" min="1" max="20" value="1" hidden>
         <input id="rows" type="number" min="1" max="100" value="4" hidden>
         <strong id="copyFormula" hidden>4 copies</strong>
