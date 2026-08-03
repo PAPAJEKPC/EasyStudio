@@ -22,12 +22,13 @@
           <option value="id-xerox">ID XEROX</option>
         </select>
       </label>
-      <section class="brand-note card">
-        <strong>EasyPhoto by PapaJekPrint</strong>
-        <small>Suggestions? Email PAPAJEKPRINT@GMAIL.COM</small>
-        <small>If you found this useful, buy me a coffee via GCash: 09705667703</small>
-      </section>
+
+
       </div>
+
+      <section class="tab-controls-section card">
+        <div class="section-title tab-controls-title"><span>⌁</span><h2>Tab Controls</h2></div>
+        <div class="tab-controls-scroll">
 
       <section id="uploadCard" class="card">
         <div class="section-title"><span>1</span><h2>Upload Photo</h2></div>
@@ -134,14 +135,26 @@
         <label class="range-row">Brightness <output id="brightOut">100%</output><input id="brightness" type="range" min="50" max="150" value="100"></label>
         <label class="range-row">Contrast <output id="contrastOut">100%</output><input id="contrast" type="range" min="50" max="150" value="100"></label>
       </section>
+        </div>
+      </section>
+
+      <div class="sidebar-bottom">
+      <section class="brand-note card">
+        <strong>EasyPhoto by PapaJekPrint</strong>
+        <small>Suggestions? Email PAPAJEKPRINT@GMAIL.COM</small>
+        <small>If you found this useful, buy me a coffee via GCash: 09705667703</small>
+      </section>
+      </div>
     </aside>
 
     <main class="main-panel">
       <header class="topbar">
-        <div class="preview-title-row"><div><h2>Printable Preview</h2><p id="stats">Page 1 of 1 · 4 photos</p></div><div class="button-grid paper paper-inline" id="paperButtons"></div><div class="preview-panel-controls"><div class="orientation-toggle" role="group" aria-label="Orientation"><button id="portraitBtn" type="button" class="active">Portrait</button><button id="landscapeBtn" type="button">Landscape</button></div><label class="guide-toggle"><input id="guides" type="checkbox" checked> Print guide cut lines</label></div></div>
+        <div class="preview-title-row"><div><h2>Printable Preview</h2><p id="stats">Page 1 of 1 · 4 photos</p></div></div>
         <div class="actions"><button id="downloadPng">Download PNG</button><button id="downloadPdf">Download PDF</button><button id="printBtn" class="primary">Print</button></div>
       </header>
-      <section class="paper-panel compact-paper-panel">
+      <section class="paper-panel compact-paper-panel paper-size-center-row">
+        <div class="button-grid paper paper-inline" id="paperButtons"></div>
+        <div class="preview-panel-controls"><div class="orientation-toggle" role="group" aria-label="Orientation"><button id="portraitBtn" type="button" class="active">Portrait</button><button id="landscapeBtn" type="button">Landscape</button></div><label class="guide-toggle"><input id="guides" type="checkbox" checked> Print guide cut lines</label></div>
         <button id="paperToggle" class="paper-toggle" type="button" aria-expanded="false">
           <span>Margin and Spacing</span><span class="chevron">⌄</span>
         </button>
