@@ -201,3 +201,17 @@ dialog.polaroid-crop .modal-head h2{font-size:16px}
 .top-brand{display:flex;align-items:center;gap:12px;min-width:0}.top-brand-logo{width:52px;height:52px;border-radius:14px;object-fit:cover;border:1px solid var(--border);box-shadow:0 6px 18px rgba(17,34,51,.14);background:#fff}.top-brand strong{display:block;font-size:18px;color:var(--text);line-height:1}.top-brand span{display:block;font-size:12px;color:var(--muted);margin-top:4px}.top-bar-title{text-align:center;font-weight:900;color:#155d9f;letter-spacing:.04em}.top-bar-contact{font-size:12px;font-weight:800;color:var(--muted);white-space:nowrap}.app-shell{height:calc(100vh - 72px)!important;min-height:calc(100vh - 72px)!important}.sidebar{height:calc(100vh - 72px)!important}.main-panel{height:calc(100vh - 72px)!important}.sidebar-sticky .brand{display:none}
 @media(max-width:980px){.app-top-bar{grid-template-columns:auto 1fr;padding:10px 16px}.top-bar-contact{display:none}.app-shell{height:calc(100vh - 72px)!important;min-height:calc(100vh - 72px)!important}.sidebar{height:calc(100vh - 72px)!important}.main-panel{height:calc(100vh - 72px)!important}}
 @media(max-width:640px){.app-top-bar{height:auto;grid-template-columns:1fr;gap:8px;text-align:center}.top-brand{justify-content:center}.top-bar-title{font-size:13px}.app-shell{height:auto!important;min-height:100vh!important}.sidebar,.main-panel{height:auto!important}}
+
+/* Mobile and tablet: make the whole app scrollable */
+@media(max-width:980px){
+  html,body{height:auto!important;min-height:100%!important;overflow:auto!important}
+  body{overscroll-behavior:auto!important}
+  .app-shell{height:auto!important;min-height:100vh!important;overflow:visible!important;display:block!important}
+  .sidebar{height:auto!important;max-height:none!important;overflow:visible!important;display:block!important}
+  .sidebar-sticky{position:relative!important;top:auto!important}
+  .tab-controls-section{height:auto!important;max-height:none!important;overflow:visible!important}
+  .tab-controls-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding-right:0!important}
+  .sidebar-bottom{margin-top:16px!important}
+  .main-panel{height:auto!important;min-height:80vh!important;overflow:visible!important}
+  .preview-wrap{height:auto!important;min-height:55vh!important;overflow:hidden!important}
+}
