@@ -161,3 +161,28 @@ dialog.polaroid-crop .modal-head h2{font-size:16px}
 .sidebar-bottom .brand-note{margin-bottom:0}
 .sidebar-sticky .brand-note{display:none}
 @media(max-width:640px){.sidebar-bottom{margin-top:16px}}
+
+
+/* Popular Size selection flow */
+.popular-size-card .section-title h2{font-size:17px}
+.popular-size-buttons{grid-template-columns:repeat(2,1fr);margin-bottom:0}
+.popular-size-buttons button{min-height:46px}
+.qty-confirm-box{display:grid;gap:12px}
+.qty-confirm-box[hidden]{display:none!important}
+.selected-size-note{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#f8fcff;color:#5c6470;font-size:13px}
+.selected-size-note strong{color:var(--blue)}
+
+
+/* EasyPhoto logo branding */
+.brand-logo{width:68px;height:68px;border-radius:16px;object-fit:cover;box-shadow:0 8px 24px rgba(17,34,51,.18);background:#fff;border:1px solid var(--border)}
+@media(max-width:640px){.brand-logo{width:58px;height:58px}}
+
+
+/* Welcome popup */
+.welcome-dialog{width:min(380px,92vw);border:0;border-radius:22px;padding:0;background:transparent;box-shadow:none}
+.welcome-dialog::backdrop{background:rgba(12,24,38,.48);backdrop-filter:blur(6px)}
+.welcome-card{background:#fff;border:1px solid var(--border);border-radius:22px;box-shadow:0 24px 90px rgba(17,34,51,.32);padding:22px;display:grid;gap:14px;text-align:center}
+.welcome-logo{width:132px;height:132px;object-fit:cover;border-radius:22px;margin:0 auto;box-shadow:0 10px 28px rgba(17,34,51,.18)}
+.welcome-card h2{margin:0;color:var(--blue);font-size:20px;letter-spacing:.04em}
+.welcome-card label{text-align:left;font-weight:900;color:#5c6470}
+.welcome-card input{text-align:center;font-weight:800}

@@ -11,7 +11,7 @@
   <div class="app-shell">
     <aside class="sidebar">
       <div class="sidebar-sticky">
-      <div class="brand"><div class="logo">EP</div><div><h1>EasyPhoto</h1><p>by PapaJekPrint</p></div></div>
+      <div class="brand"><img class="brand-logo" src="easyphoto-logo.png" alt="EasyPhoto by PapaJekPrint logo"><div><h1>EasyPhoto</h1><p>by PapaJekPrint</p></div></div>
 
       <label class="mode-dropdown-wrap" for="modeSelect">
         <span>Layout Mode</span>
@@ -27,7 +27,7 @@
       </div>
 
       <section class="tab-controls-section card">
-        <div class="section-title tab-controls-title"><span>⌁</span><h2>Tab Controls</h2></div>
+        <div class="section-title tab-controls-title"><span>⌁</span><h2 id="tabControlsTitle">ID PHOTO Controls</h2></div>
         <div class="tab-controls-scroll">
 
       <section id="uploadCard" class="card">
@@ -107,22 +107,25 @@
         </label>
       </section>
 
-      <section id="sizesCard" class="card">
-        <div class="section-title"><span id="sizeSectionNumber">3</span><h2>Sizes & Quantity</h2></div>
-        <div id="idSizeButtons" class="button-grid id-size-buttons">
+      <section id="sizesCard" class="card popular-size-card">
+        <div class="section-title"><span id="sizeSectionNumber">3</span><h2>Popular Size</h2></div>
+        <div id="idSizeButtons" class="button-grid id-size-buttons popular-size-buttons">
           <button type="button" data-id-size="1x1">1x1 in</button>
-          <button type="button" data-id-size="1.5x1.5">1.5x1.5 in</button>
-          <button type="button" data-id-size="2x2" class="active">2x2</button>
+          <button type="button" data-id-size="2x2">2x2 in</button>
+          <button type="button" data-id-size="1.5x1.5">1.5x1.5</button>
           <button type="button" data-id-size="Passport">Passport</button>
         </div>
-        <label>Quantity <input id="customQty" type="number" min="1" max="100" value="4"></label>
+        <div id="qtyConfirmBox" class="qty-confirm-box" hidden>
+          <div class="selected-size-note">Selected: <strong id="selectedSizeName">2x2 in</strong></div>
+          <label>Quantity <input id="customQty" type="number" min="1" max="100" value="4"></label>
+          <button id="addQtySize" class="wide primary" type="button">ADD</button>
+        </div>
         <input id="photoW" type="number" min="0.1" step="0.1" value="2" hidden>
         <input id="photoH" type="number" min="0.1" step="0.1" value="2" hidden>
         <select id="unit" hidden><option>inch</option><option>mm</option><option>cm</option></select>
         <input id="cols" type="number" min="1" max="20" value="1" hidden>
         <input id="rows" type="number" min="1" max="100" value="4" hidden>
         <strong id="copyFormula" hidden>4 copies</strong>
-        <button id="addQtySize" class="wide primary" type="button">Add Size</button>
         <div class="cache-status-title">Cache Status</div>
         <div id="sizeList" class="size-list"></div>
       </section>
@@ -189,6 +192,18 @@
       <p id="cameraStatus" class="camera-status">Camera preview will appear here.</p>
     </div>
     <div class="modal-actions"><button id="refreshCameras" class="secondary">Refresh</button><button id="captureCamera" class="primary">Capture Photo</button></div>
+  </dialog>
+
+
+  <dialog id="welcomeDialog" class="welcome-dialog">
+    <form method="dialog" class="welcome-card">
+      <img src="easyphoto-logo.png" alt="EasyPhoto logo" class="welcome-logo">
+      <h2>WELCOME TO EASYPHOTO</h2>
+      <label>WHAT IS YOUR NAME
+        <input id="userNameInput" type="text" placeholder="Enter your name" autocomplete="name">
+      </label>
+      <button id="saveUserNameBtn" type="submit" class="primary wide">Continue</button>
+    </form>
   </dialog>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
